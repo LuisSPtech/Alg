@@ -10,7 +10,7 @@
     Calculadora que possui a funcionalidade de quantificar, em reais, o potencial de perda da plantação caso o nivel de umidade relativa do solo de uma plantação não seja monitorado.<br> <br>
     Insira a quantidade de hectares que a sua plantação possui: <input type="text" id="input_hectar"><br> <br>
     Insira o valor de um hectare do seu milho: <input type="text" id="input_milho"><br> <br>
-    Insira o gasto total para a produção de um hectar de milho: <input type="text" id="input_custo"><br><br>
+    Insira o gasto total para a produção de um hectar de milho (Custos com agua, empregados, manutenção, energia <br> e todos os gastos necessarios para a produção do milho): <input type="text" id="input_custo"><br><br>
     <button onclick="calcular()"> Calcular potencial de perda do milho </button> <br> <br>
     <div id="div_resposta"></div><br> 
     
@@ -21,6 +21,8 @@
         var custo = Number(input_custo.value)
         var hectar = Number(input_hectar.value)
         var milho = Number(input_milho.value)
+        var receitatot = milho * hectar
+        var luc_brut = (milho*hectar)-(custo*hectar)
         var dolar = milho * 0.2
         var maior_perda = (milho * hectar) * 0.5
         var menor_perda = (milho * hectar) * 0.3
@@ -42,8 +44,8 @@
         A maior perda potencial percentual da sua plantação em relação ao custo total da mesma é de: ${perdaplantmax} % <br>
         A menor perda potencial percentual da sua plantação em relação ao custo total da mesma é de: ${perdaplantmin} % <br>
         A perda potencial média percentual da sua plantação em relação ao custo total da mesma é de: ${perdaplantm} % <br>
-        
-        
+        Caso ocorra a adoção do projeto, a perda causada pela umidade relativa incorreta será neutralizada, fazendo com que a receita total da plantação se  torne: ${receitatot} <br>
+        Além disso o lucro bruto da colheita será de: ${luc_brut}
         `
     }
 </script>
